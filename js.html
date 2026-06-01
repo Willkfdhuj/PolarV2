@@ -1,0 +1,45 @@
+<script>
+// Welcome message
+window.addEventListener("load", () => {
+    const gameCount = document.querySelectorAll(".game-card").length;
+
+    const message = document.createElement("p");
+    message.innerHTML = `🎮 Welcome to Polar V2! ${gameCount} games available.`;
+    message.style.fontSize = "18px";
+    message.style.marginTop = "10px";
+
+    document.querySelector("header").appendChild(message);
+});
+
+// Click counter
+let totalPlays = 0;
+
+document.querySelectorAll(".play-btn").forEach(button => {
+    button.addEventListener("click", () => {
+        totalPlays++;
+
+        let counter = document.getElementById("playCounter");
+
+        if (!counter) {
+            counter = document.createElement("p");
+            counter.id = "playCounter";
+            counter.style.marginTop = "15px";
+            document.querySelector("header").appendChild(counter);
+        }
+
+        counter.textContent = `🔥 Games launched this session: ${totalPlays}`;
+    });
+});
+
+// Card hover effects
+document.querySelectorAll(".game-card").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+        card.style.transform = "scale(1.05)";
+        card.style.transition = "0.3s";
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "scale(1)";
+    });
+});
+</script>
