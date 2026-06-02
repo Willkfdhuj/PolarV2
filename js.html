@@ -1,18 +1,35 @@
-const express = require('express');
-const fetch = require('node-fetch');
+const express = require("express");
+const fetch = require("node-fetch");
+
 const app = express();
 
-app.get('/proxy', async (req, res) => {
-  const targetUrl = req.query.url;
-  if (!targetUrl) return res.status(400).send('Missing url parameter');
+// Simple web proxy endpoint
+app.get("/proxy", async (req, res) => {
+    const url = req.query.url;
 
-  try {
-    const response = await fetch(targetUrl);
-    const body = await response.text();
-    res.send(body);
-  } catch (err) {
-    res.status(500).send('Proxy error: ' + err.message);
-  }
+    if (!url) {
+        return res.status(400).send("Missing ?url=");
+    }
+
+    // Basic safety check (prevents obvious local access)
+    if (url.includes("localhost") || url.includes("127.0.0.1")) {
+        return res.status(403).send("Blocked URL");
+    }
+
+    try {
+        const response = await fetch(url);
+        const contentType = response.headers.get("content-type");
+
+        res.setHeader("Content-Type", contentType || "text/plain");
+
+        const data = await response.text();
+        res.send(data);
+
+    } catch (err) {
+        res.status(500).send("Error fetching URL");
+    }
 });
 
-app.listen(3000, () => console.log('Proxy server running on port 3000'));
+app.listen(3000, () => {
+    console.log("Proxy running on http://localhost:3000");
+});
