@@ -1,45 +1,18 @@
-<script>
-// Welcome message
-window.addEventListener("load", () => {
-    const gameCount = document.querySelectorAll(".game-card").length;
+const express = require('express');
+const fetch = require('node-fetch');
+const app = express();
 
-    const message = document.createElement("p");
-    message.innerHTML = `🎮 Welcome to Polar V2! ${gameCount} games available.`;
-    message.style.fontSize = "18px";
-    message.style.marginTop = "10px";
+app.get('/proxy', async (req, res) => {
+  const targetUrl = req.query.url;
+  if (!targetUrl) return res.status(400).send('Missing url parameter');
 
-    document.querySelector("header").appendChild(message);
+  try {
+    const response = await fetch(targetUrl);
+    const body = await response.text();
+    res.send(body);
+  } catch (err) {
+    res.status(500).send('Proxy error: ' + err.message);
+  }
 });
 
-// Click counter
-let totalPlays = 0;
-
-document.querySelectorAll(".play-btn").forEach(button => {
-    button.addEventListener("click", () => {
-        totalPlays++;
-
-        let counter = document.getElementById("playCounter");
-
-        if (!counter) {
-            counter = document.createElement("p");
-            counter.id = "playCounter";
-            counter.style.marginTop = "15px";
-            document.querySelector("header").appendChild(counter);
-        }
-
-        counter.textContent = `🔥 Games launched this session: ${totalPlays}`;
-    });
-});
-
-// Card hover effects
-document.querySelectorAll(".game-card").forEach(card => {
-    card.addEventListener("mouseenter", () => {
-        card.style.transform = "scale(1.05)";
-        card.style.transition = "0.3s";
-    });
-
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = "scale(1)";
-    });
-});
-</script>
+app.listen(3000, () => console.log('Proxy server running on port 3000'));
