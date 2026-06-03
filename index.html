@@ -98,28 +98,37 @@ footer{
     <input
         id="searchInput"
         type="text"
-        placeholder="Search the web..."
+        placeholder="Enter a website (example.com)"
         style="padding:12px;width:300px;border:none;border-radius:10px;"
     >
     <button
         type="submit"
         style="padding:12px 20px;border:none;border-radius:10px;background:#00bfff;color:white;font-weight:bold;cursor:pointer;"
     >
-        Search
+        Open
     </button>
 </form>
+
+<div style="margin-top:20px;">
+    <iframe
+        id="siteFrame"
+        style="width:90%;height:600px;border:none;border-radius:12px;background:white;"
+    ></iframe>
+</div>
 
 <script>
 document.getElementById("searchForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const query = document.getElementById("searchInput").value;
-    window.location.href =
-        "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+    let url = document.getElementById("searchInput").value.trim();
+
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        url = "https://" + url;
+    }
+
+    document.getElementById("siteFrame").src = url;
 });
 </script>
-
-<input id="search-engine" value="https://duckduckgo.com/?q=%s" type="hidden">
 
 <footer>
     © 2026 Polar V2
