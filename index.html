@@ -18,12 +18,33 @@ body{
     color:white;
     min-height:100vh;
     text-align:center;
+    overflow-x:hidden;
+}
+
+/* ❄ Snow effect */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    opacity: 0.8;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(110vh); }
 }
 
 header{
     background:rgba(255,255,255,0.1);
     padding:20px;
     backdrop-filter:blur(10px);
+    position:relative;
+    z-index:2;
 }
 
 h1{
@@ -56,6 +77,8 @@ nav a:hover{
 
 .hero{
     padding:100px 20px;
+    position:relative;
+    z-index:2;
 }
 
 .hero h2{
@@ -74,6 +97,7 @@ footer{
     width:100%;
     padding:15px;
     background:rgba(255,255,255,0.1);
+    z-index:2;
 }
 </style>
 </head>
@@ -85,7 +109,7 @@ footer{
 
     <nav>
         <a href="index.html">🏠 Home</a>
-        <a href="games.html">🎮 Gam
+        <a href="games.html">🎮 Gam</a>
         <a href="https://discord.gg/https://discord.gg/kvTCs2QPev" target="_blank">💬 Discord</a>
     </nav>
 </header>
@@ -115,6 +139,7 @@ footer{
         style="width:90%;height:600px;border:none;border-radius:12px;"
     ></iframe>
 </div>
+
 <script>
 document.getElementById("searchForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -129,15 +154,35 @@ document.getElementById("searchForm").addEventListener("submit", function(e) {
     document.getElementById("siteFrame").src = url;
 });
 </script>
-    >
-    
-<h3>Quote! "Just because something is hard and you face obstacles doesn't mean you give up, thats called life." - Wyllyia</h3>
 
-    >
-    
+<h3 style="margin-top:30px;">
+    Quote: "Just because something is hard and you face obstacles doesn't mean you give up, that's called life." — Wyllyia
+</h3>
+
 <footer>
     © 2026 Polar V2
 </footer>
+
+<script>
+function createSnowflake() {
+    const snow = document.createElement("div");
+    snow.classList.add("snowflake");
+    snow.innerHTML = "❄";
+
+    snow.style.left = Math.random() * window.innerWidth + "px";
+    snow.style.animationDuration = (3 + Math.random() * 5) + "s";
+    snow.style.fontSize = (10 + Math.random() * 20) + "px";
+    snow.style.opacity = Math.random();
+
+    document.body.appendChild(snow);
+
+    setTimeout(() => {
+        snow.remove();
+    }, 8000);
+}
+
+setInterval(createSnowflake, 200);
+</script>
 
 </body>
 </html>
