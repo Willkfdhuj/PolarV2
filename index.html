@@ -94,10 +94,10 @@ footer{
 <h2>Welcome to Polar V2</h2>
 <p>Let Polar V2 freeze up your boredom</p>
 
-<form action="https://duckduckgo.com/" method="get" style="margin-top:20px;">
+<form id="searchForm" style="margin-top:20px;">
     <input
+        id="searchInput"
         type="text"
-        name="q"
         placeholder="Search the web..."
         style="padding:12px;width:300px;border:none;border-radius:10px;"
     >
@@ -108,6 +108,16 @@ footer{
         Search
     </button>
 </form>
+
+<script>
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const query = document.getElementById("searchInput").value;
+    window.location.href =
+        "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+});
+</script>
 
 <input id="search-engine" value="https://duckduckgo.com/?q=%s" type="hidden">
 
