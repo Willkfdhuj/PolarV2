@@ -109,13 +109,12 @@ footer{
     </button>
 </form>
 
-<div style="margin-top:20px;">
+<div id="frameContainer" style="margin-top:20px; display:none;">
     <iframe
         id="siteFrame"
-        style="width:90%;height:600px;border:none;border-radius:12px;background:white;"
+        style="width:90%;height:600px;border:none;border-radius:12px;"
     ></iframe>
 </div>
-
 <script>
 document.getElementById("searchForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -126,6 +125,7 @@ document.getElementById("searchForm").addEventListener("submit", function(e) {
         url = "https://" + url;
     }
 
+    document.getElementById("frameContainer").style.display = "block";
     document.getElementById("siteFrame").src = url;
 });
 </script>
