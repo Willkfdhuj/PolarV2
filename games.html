@@ -17,10 +17,15 @@ body{
 header{
     padding:20px;
     background:rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
 }
 
 h1{
     color:#dff6ff;
+}
+
+nav{
+    margin-top:15px;
 }
 
 nav a{
@@ -30,6 +35,29 @@ nav a{
     padding:10px 20px;
     background:#00bfff;
     border-radius:10px;
+    transition:.2s;
+}
+
+nav a:hover{
+    background:#7ddfff;
+    color:#00334d;
+}
+
+.search{
+    width:90%;
+    max-width:500px;
+    margin:25px auto;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    background:rgba(255,255,255,.15);
+    color:white;
+    outline:none;
+}
+
+.search::placeholder{
+    color:#dff6ff;
 }
 
 .games{
@@ -40,9 +68,15 @@ nav a{
 }
 
 .game-card{
-    background:rgba(255,255,255,.1);
+    background:rgba(255,255,255,.12);
     border-radius:15px;
     padding:20px;
+    transition:.2s;
+}
+
+.game-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(125,223,255,.5);
 }
 
 .game-card h3{
@@ -58,6 +92,16 @@ nav a{
     text-decoration:none;
     border-radius:10px;
     font-weight:bold;
+    transition:.2s;
+}
+
+.play-btn:hover{
+    background:white;
+}
+
+footer{
+    padding:20px;
+    color:#dff6ff;
 }
 </style>
 </head>
@@ -74,6 +118,13 @@ nav a{
     </nav>
 </header>
 
+<input
+class="search"
+type="text"
+id="search"
+placeholder="Search Games..."
+onkeyup="searchGames()">
+
 <div class="games">
 
     <div class="game-card">
@@ -85,12 +136,12 @@ nav a{
     <div class="game-card">
         <h3>Baseball Bros</h3>
         <p>Just baseball bros</p>
-        <a class="play-btn" href="https://game.html/">Play</a>
+        <a class="play-btn" href="game.html">Play</a>
     </div>
 
     <div class="game-card">
         <h3>Slope</h3>
-        <p>roll into slope :D.</p>
+        <p>Roll into Slope :D</p>
         <a class="play-btn" href="game.html">Play</a>
     </div>
 
@@ -111,6 +162,7 @@ nav a{
         <p>Combine tiles to reach 2048.</p>
         <a class="play-btn" href="game.html">Play</a>
     </div>
+
     <div class="game-card">
         <h3>Drift Hunters</h3>
         <p>Rae's favorite game</p>
@@ -118,6 +170,27 @@ nav a{
     </div>
 
 </div>
+
+<footer>
+    Polar V2 © 2026
+</footer>
+
+<script>
+function searchGames() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".game-card");
+
+    cards.forEach(card => {
+        let text = card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
 
 </body>
 </html>
