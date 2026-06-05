@@ -125,9 +125,14 @@ id="search"
 placeholder="Search Games..."
 onkeyup="searchGames()">
 
-<div class="games">
+    <div class="games" id="games-container"></div>
+    
 
-    <script>
+<footer>
+    Polar V2 © 2026
+</footer>
+
+<script>
 const games = [
   ["Geometry Dash","Fast Geometry Dash","games/geometrydash"],
   ["Baseball Bros","Just baseball bros","games/baseballbros"],
@@ -165,27 +170,6 @@ games.forEach(game => {
   `;
 });
 
-function searchGames() {
-    let input = document.getElementById("search").value.toLowerCase();
-    let cards = document.querySelectorAll(".game-card");
-
-    cards.forEach(card => {
-        let text = card.innerText.toLowerCase();
-
-        if(text.includes(input)){
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
-</script>
-
-<footer>
-    Polar V2 © 2026
-</footer>
-
-<script>
 function searchGames() {
     let input = document.getElementById("search").value.toLowerCase();
     let cards = document.querySelectorAll(".game-card");
