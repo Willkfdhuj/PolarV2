@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drift Hunters - Polar V2</title>
+
+<style>
+body{
+    margin:0;
+    background:linear-gradient(to bottom,#001f3f,#0099cc);
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+}
+
+header{
+    padding:20px;
+    background:rgba(255,255,255,0.1);
+}
+
+iframe{
+    width:95%;
+    height:80vh;
+    border:none;
+    border-radius:12px;
+    margin:20px auto;
+    display:block;
+    background:black;
+}
+
+a{
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>❄ Drift Hunters ❄</h1>
+</header>
+
+<iframe
+    src="https://www.crazygames.com/embed/drift-hunters"
+    allowfullscreen>
+</iframe>
+
+<p>
+    If the game does not load, open it directly on
+    <a href="https://www.crazygames.com/game/drift-hunters" target="_blank">
+        CrazyGames
+    </a>.
+</p>
+
+</body>
+</html>
