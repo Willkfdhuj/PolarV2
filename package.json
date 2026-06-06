@@ -7,7 +7,7 @@
 	"packageManager": "pnpm@9.12.2",
 	"engines": {
 		"npm": ">=7.0.0",
-		"node": ">=16.0.0"
+		"node": ">=22.0.0"
 	},
 	"scripts": {
 		"start": "node --watch index.js",
