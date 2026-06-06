@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polar V2 | Apps</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(to bottom, #001f3f, #0099cc);
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* ❄ snow */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(110vh); }
+}
+
+/* HEADER */
+header{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    backdrop-filter:blur(10px);
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+h1{
+    font-size:2.5rem;
+    color:#dff6ff;
+    text-shadow:0 0 15px #7ddfff;
+}
+
+nav{
+    margin-top:10px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    background:#00bfff;
+    padding:10px 18px;
+    margin:5px;
+    border-radius:12px;
+    display:inline-block;
+    transition:.3s;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#7ddfff;
+    color:#00334d;
+    transform:scale(1.05);
+}
+
+/* SEARCH */
+.search{
+    margin-top:20px;
+}
+
+.search input{
+    padding:12px;
+    width:300px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
+
+.search button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#00bfff;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    gap:15px;
+    padding:30px;
+    position:relative;
+    z-index:2;
+}
+
+.card{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(8px);
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover{
+    transform:scale(1.05);
+    background:rgba(255,255,255,0.2);
+}
+
+.card img{
+    width:100%;
+    height:110px;
+    object-fit:cover;
+}
+
+.card div{
+    padding:10px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    padding:15px;
+    background:rgba(255,255,255,0.1);
+    text-align:center;
+    z-index:2;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>❄ Polar V2 Apps ❄</h1>
+
+    <nav>
+        <a href="index.html">🏠 Home</a>
+        <a href="games.html">🎮 Games</a>
+        <a href="apps.html">📱 Apps</a>
+    </nav>
+
+    <div class="search">
+        <input id="search" placeholder="Search apps...">
+    </div>
+</header>
+
+<!-- APPS GRID -->
+<div class="grid" id="grid"></div>
+
+<footer>
+    © 2026 Polar V2
+</footer>
+
+<script>
+// YOUR APPS (easy to edit)
+const apps = [
+  {name:"Google", img:"https://th.bing.com/th/id/OIP.vWg5LhXXmZiXStDXVqEmEgAAAA?w=162&h=180&c=7&r=0&o=7&pid=1.7&rm=3", link:"https://www.google.com/"},
+  {name:"YouTube", img:"https://th.bing.com/th/id/OIP.Y6P1GkxkEoLoIRsS1wMZiwHaFj?w=234&h=180&c=7&r=0&o=7&pid=1.7&rm=3", link:"https://www.youtube.com/"},
+  {name:"Discord", img:"https://th.bing.com/th/id/OIP.Km8kvqjANSRKVXtvyKHdgAHaFj?w=247&h=180&c=7&r=0&o=7&pid=1.7&rm=3", link:"https://discord.gg/"},
+  {name:"ChatGPT", img:"https://th.bing.com/th/id/OIP.9H3BkaAQR3RMB8_bLZppYwHaFj?w=233&h=180&c=7&r=0&o=7&pid=1.7&rm=3", link:"chatgpt.com"},
+  {name:"Reddit", img:"https://th.bing.com/th?q=Reddit+Logo+High+Quality&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&pid=InlineBlock&rm=3&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1&mw=247", link:"https://www.reddit.com/"},
+  {name:"Xbox", img:"https://th.bing.com/th/id/OIP.hRp0b3sxRZQoEL_38D6qiwHaHa?w=171&h=180&c=7&r=0&o=7&pid=1.7&rm=3", link:"https://www.xbox.com/en-US/"}
+];
+
+const grid = document.getElementById("grid");
+
+function render(list){
+    grid.innerHTML = "";
+    list.forEach(app=>{
+        grid.innerHTML += `
+        <div class="card" onclick="location.href='${app.link}'">
+            <img src="${app.img}">
+            <div>${app.name}</div>
+        </div>
+        `;
+    });
+}
+
+render(apps);
+
+// SEARCH FILTER
+document.getElementById("search").addEventListener("input", e=>{
+    const val = e.target.value.toLowerCase();
+    render(apps.filter(a=>a.name.toLowerCase().includes(val)));
+});
+
+// ❄ SNOW
+function createSnowflake(){
+    const snow = document.createElement("div");
+    snow.classList.add("snowflake");
+    snow.innerHTML = "❄";
+
+    snow.style.left = Math.random() * window.innerWidth + "px";
+    snow.style.animationDuration = (3 + Math.random()*5) + "s";
+    snow.style.fontSize = (10 + Math.random()*20) + "px";
+
+    document.body.appendChild(snow);
+
+    setTimeout(()=>snow.remove(), 8000);
+}
+
+setInterval(createSnowflake, 200);
+</script>
+
+</body>
+</html>
