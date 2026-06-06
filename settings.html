@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Polar V2 Settings</title>
+
+<link rel="icon" href="favicon.ico">
 
 <style>
 *{
@@ -22,7 +23,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ❄ Snow Effect */
+/* snow */
 .snowflake{
     position:fixed;
     top:-10px;
@@ -115,7 +116,8 @@ button:hover{
 <header>
     <h1>⚙️ Polar V2 Settings ⚙️</h1>
 
-    <a href="/" class="nav-btn">🏠 Home</a>
+    <!-- FIXED PATH FOR GITHUB PAGES -->
+    <a href="./" class="nav-btn">🏠 Home</a>
 </header>
 
 <div class="settings-box">
@@ -123,17 +125,11 @@ button:hover{
     <div class="section">
         <h2>✏️ Site Name Changer</h2>
 
-        <input
-            type="text"
-            id="siteName"
-            placeholder="Enter custom site name"
-        >
+        <input type="text" id="siteName" placeholder="Enter custom site name">
 
         <br>
 
-        <button onclick="changeSiteName()">
-            Save Site Name
-        </button>
+        <button onclick="changeSiteName()">Save Site Name</button>
     </div>
 
     <div class="section">
@@ -149,77 +145,80 @@ button:hover{
 
         <br>
 
-        <button onclick="applyCloak()">
-            Apply Cloak
-        </button>
+        <button onclick="applyCloak()">Apply Cloak</button>
     </div>
 
 </div>
 
 <script>
-// Load saved title
-if(localStorage.getItem("polarTitle")){
-    document.title = localStorage.getItem("polarTitle");
-}
+// load saved settings instantly (ALL pages support)
+(function(){
+    const title = localStorage.getItem("polarTitle");
+    const icon = localStorage.getItem("polarFavicon");
 
-// Load saved favicon
-const savedIcon = localStorage.getItem("polarFavicon");
+    if(title) document.title = title;
 
-if(savedIcon){
-    let link = document.querySelector("link[rel='icon']");
-
-    if(!link){
-        link = document.createElement("link");
-        link.rel = "icon";
-        document.head.appendChild(link);
+    if(icon){
+        let link = document.querySelector("link[rel='icon']");
+        if(!link){
+            link = document.createElement("link");
+            link.rel = "icon";
+            document.head.appendChild(link);
+        }
+        link.href = icon;
     }
-
-    link.href = savedIcon;
-}
+})();
 
 function changeSiteName(){
-    const name = document.getElementById("siteName").value;
+    const name = document.getElementById("siteName").value.trim();
 
-    if(name.trim() !== ""){
-        document.title = name;
-        localStorage.setItem("polarTitle", name);
-        alert("Site name updated!");
-    }
+    if(!name) return alert("Enter a site name.");
+
+    document.title = name;
+    localStorage.setItem("polarTitle", name);
+
+    alert("Site name saved!");
 }
 
 function applyCloak(){
 
-    const cloak =
-        document.getElementById("cloakSelect").value;
+    const cloak = document.getElementById("cloakSelect").value;
 
     let title = "";
     let favicon = "";
 
-    if(cloak === "google"){
-        title = "Google";
-        favicon = "https://www.google.com/favicon.ico";
-    }
+    switch(cloak){
 
-    if(cloak === "classroom"){
-        title = "Classes";
-        favicon = "https://ssl.gstatic.com/classroom/favicon.png";
-    }
+        case "google":
+            title = "Google";
+            favicon = "https://www.google.com/favicon.ico";
+            break;
 
-    if(cloak === "docs"){
-        title = "Google Docs";
-        favicon = "https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico";
-    }
+        case "classroom":
+            title = "Classes";
+            favicon = "https://ssl.gstatic.com/classroom/favicon.png";
+            break;
 
-    if(cloak === "drive"){
-        title = "Google Drive";
-        favicon = "https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_32dp.png";
+        case "docs":
+            title = "Google Docs";
+            favicon = "https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico";
+            break;
+
+        case "drive":
+            title = "My Drive";
+            favicon = "https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_32dp.png";
+            break;
+
+        default:
+            return alert("Choose a cloak first.");
     }
 
     document.title = title;
+
     localStorage.setItem("polarTitle", title);
+    localStorage.setItem("polarFavicon", favicon);
 
     let link = document.querySelector("link[rel='icon']");
-
     if(!link){
         link = document.createElement("link");
         link.rel = "icon";
@@ -227,28 +226,27 @@ function applyCloak(){
     }
 
     link.href = favicon;
-    localStorage.setItem("polarFavicon", favicon);
+
+    alert("Cloak applied!");
 }
 
-/* ❄ Snow Generator */
-function createSnowflake() {
+/* snow */
+function createSnowflake(){
     const snow = document.createElement("div");
-    snow.classList.add("snowflake");
-    snow.innerHTML = "❄";
+    snow.className = "snowflake";
+    snow.textContent = "❄";
 
-    snow.style.left = Math.random() * window.innerWidth + "px";
+    snow.style.left = Math.random() * 100 + "vw";
     snow.style.animationDuration = (3 + Math.random() * 5) + "s";
     snow.style.fontSize = (10 + Math.random() * 20) + "px";
     snow.style.opacity = Math.random();
 
     document.body.appendChild(snow);
 
-    setTimeout(() => {
-        snow.remove();
-    }, 8000);
+    setTimeout(() => snow.remove(), 8000);
 }
 
-setInterval(createSnowflake, 200);
+setInterval(createSnowflake, 250);
 </script>
 
 </body>
