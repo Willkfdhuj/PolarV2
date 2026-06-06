@@ -142,6 +142,30 @@ footer{
     ></iframe>
 </div>
 
+<script src="/scram/scramjet.client.js"></script>
+<script src="/scram/client-shim.js"></script>
+<script>
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let url = document.getElementById("searchInput").value.trim();
+
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        url = "https://" + url;
+    }
+
+    document.getElementById("frameContainer").style.display = "block";
+    document.getElementById("siteFrame").src = "/scram/bridge.html?url=" + encodeURIComponent(url);
+});
+</script>
+
+<div id="frameContainer" style="margin-top:20px; display:none;">
+    <iframe
+        id="siteFrame"
+        style="width:90%;height:600px;border:none;border-radius:12px;"
+    ></iframe>
+</div>
+
 <script>
 document.getElementById("searchForm").addEventListener("submit", function(e) {
     e.preventDefault();
