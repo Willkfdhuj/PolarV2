@@ -159,28 +159,6 @@ document.getElementById("searchForm").addEventListener("submit", function(e) {
 });
 </script>
 
-<div id="frameContainer" style="margin-top:20px; display:none;">
-    <iframe
-        id="siteFrame"
-        style="width:90%;height:600px;border:none;border-radius:12px;"
-    ></iframe>
-</div>
-
-<script>
-document.getElementById("searchForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    let url = document.getElementById("searchInput").value.trim();
-
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-        url = "https://" + url;
-    }
-
-    document.getElementById("frameContainer").style.display = "block";
-    document.getElementById("siteFrame").src = url;
-});
-</script>
-
 <h3 style="margin-top:30px;">
     Quote: "Just because something is hard and you face obstacles doesn't mean you give up, that's called life." — Wyllyia
 </h3>
