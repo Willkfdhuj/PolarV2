@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@ body{
     background:linear-gradient(to bottom,#001f3f,#0099cc);
     color:white;
     text-align:center;
+    min-height:100vh;
 }
 
 header{
@@ -31,10 +33,11 @@ nav{
 nav a{
     color:white;
     text-decoration:none;
-    margin:10px;
+    margin:5px;
     padding:10px 20px;
     background:#00bfff;
     border-radius:10px;
+    display:inline-block;
     transition:.2s;
 }
 
@@ -65,6 +68,8 @@ nav a:hover{
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
     padding:30px;
+    max-width:1400px;
+    margin:auto;
 }
 
 .game-card{
@@ -116,7 +121,7 @@ footer{
         <a href="games.html">🎮 Games</a>
         <a href="https://discord.gg/kvTCs2QPev" target="_blank">💬 Discord</a>
         <a href="apps.html">🌐 Apps</a>
-        <a href="settings.html">⚙️ Settings
+        <a href="settings.html">⚙️ Settings</a>
     </nav>
 </header>
 
@@ -127,8 +132,7 @@ id="search"
 placeholder="Search Games..."
 onkeyup="searchGames()">
 
-    <div class="games" id="games-container"></div>
-    
+<div class="games" id="games-container"></div>
 
 <footer>
     Polar V2 © 2026
@@ -136,97 +140,148 @@ onkeyup="searchGames()">
 
 <script>
 const games = [
-  ["Geometry Dash","Fast Geometry Dash","Games/geometrydash/index.html"],
-  ["Baseball Bros","Baseball action","Games/baseballbros/index.html"],
-  ["Basketball Bros","Basketball fun","Games/basketballbros/index.html"],
-  ["Football Bros","Football action","footballbros"],
-  ["Soccer Bros","Soccer matches","soccerbros"],
-  ["Roblox","The impossible is possible","Games/roblox/index.html"],
-  ["Slope","Roll down endless slopes","Games/slope/index.html"],
-  ["Run 3","Run through space tunnels","run3"],
-  ["Tetris","Classic block puzzle","tetris"],
-  ["Snake","Grow as long as possible","snake"],
-  ["2048","Combine tiles to 2048","2048"],
-  ["Drift Hunters","Drift awesome cars","drifthunters"],
-  ["Drive Mad","Physics driving challenge","drivemad"],
-  ["Moto X3M","Bike racing levels","motox3m"],
-  ["Tunnel Rush","Fast reaction tunnel game","tunnelrush"],
-  ["Subway Surfers","Endless running game","subwaysurfers"],
-  ["Temple Run 2","Escape the temple","templerun2"],
-  ["Crossy Road","Cross roads safely","crossyroad"],
-  ["Tiny Fishing","Catch fish and upgrade","tinyfishing"],
-  ["Cookie Clicker","Idle clicking game","cookieclicker"],
-  ["Duck Life","Train and race your duck","ducklife"],
-  ["Stickman Hook","Swing through levels","stickmanhook"],
-  ["Retro Bowl","Football management","retrobowl"],
-  ["Rooftop Snipers","Funny sniper battles","rooftopsnipers"],
-  ["Getaway Shootout","Race to the finish","getawayshootout"],
-  ["Gun Mayhem","Chaotic arena battles","gunmayhem"],
-  ["Fireboy and Watergirl","Co-op puzzle platformer","fireboywatergirl"],
-  ["Vex 3","Challenging platforming","vex3"],
-  ["Vex 4","More Vex challenges","vex4"],
-  ["Vex 5","Advanced Vex levels","vex5"],
-  ["Vex 6","Ultimate Vex adventure","vex6"],
-  ["Vex 7","Newest Vex experience","vex7"],
-  ["Paper.io 2","Capture territory","paperio2"],
-  ["Shell Shockers","Egg shooter game","shellshockers"],
-  ["Agar.io","Grow by consuming cells","agario"],
-  ["Slither.io","Grow your snake","slitherio"],
-  ["Hole.io","Swallow the city","holeio"],
-  ["Minecraft Classic","Classic Minecraft","minecraftclassic"],
-  ["Idle Breakout","Brick-breaking idle game","idlebreakout"],
-  ["BitLife","Life simulation","bitlife"],
-  ["Bloons Tower Defense","Monkey tower defense","bloonstd"],
-  ["Chess","Classic chess","chess"],
-  ["Checkers","Classic checkers","checkers"],
-  ["Pac-Man","Arcade maze game","pacman"],
-  ["Doodle Jump","Jump endlessly","doodlejump"],
-  ["Flappy Bird","Simple but difficult","flappybird"],
-  ["World's Hardest Game","Extremely challenging","worldshardestgame"],
-  ["Happy Wheels","Physics obstacle game","happywheels"],
-  ["Super Smash Flash","Platform fighter","supersmashflash"],
-  ["Learn to Fly","Launch the penguin","learntofly"],
-  ["Bloxorz","Puzzle block game","bloxorz"],
-  ["Tank Trouble","Tank battles","tanktrouble"],
-  ["HexGL","Futuristic racing","hexgl"],
-  ["FNAF","Five Nights at Freddy's","fnaf"],
-  ["Bad Ice Cream","Arcade multiplayer","badicecream"],
-  ["Cut the Rope","Feed Om Nom","cuttherope"],
-  ["Jetpack Joyride","Endless jetpack runner","jetpackjoyride"],
-  ["Super Mario 63","Mario fan game","supermario63"],
-  ["Among Us","Crewmate adventures","amongus"],
-  ["Zombotron","Zombie action platformer","zombotron"],
-  ["Earn to Die","Drive through zombies","earntodie"],
-  ["Raft Wars","Funny shooting game","raftwars"]
+["Geometry Dash","Fast Geometry Dash","Games/geometrydash/index.html"],
+["Slope","Roll down endless slopes","Games/slope/index.html"],
+["Run 3","Run through space tunnels","Games/run3/index.html"],
+["Drift Hunters","Drift awesome cars","Games/drifthunters/index.html"],
+["Drive Mad","Physics driving challenge","Games/drivemad/index.html"],
+["Moto X3M","Bike racing levels","Games/motox3m/index.html"],
+["Tunnel Rush","Fast reaction tunnel game","Games/tunnelrush/index.html"],
+["Subway Surfers","Endless running game","Games/subwaysurfers/index.html"],
+["Temple Run 2","Escape the temple","Games/templerun2/index.html"],
+["Crossy Road","Cross roads safely","Games/crossyroad/index.html"],
+["Tiny Fishing","Catch fish and upgrade","Games/tinyfishing/index.html"],
+["Cookie Clicker","Idle clicking game","Games/cookieclicker/index.html"],
+["Duck Life","Train your duck","Games/ducklife/index.html"],
+["Duck Life 2","Train harder","Games/ducklife2/index.html"],
+["Duck Life 3","Genetically modified ducks","Games/ducklife3/index.html"],
+["Stickman Hook","Swing through levels","Games/stickmanhook/index.html"],
+["Retro Bowl","Football management","Games/retrobowl/index.html"],
+["Retro Bowl College","College football","Games/retrobowlcollege/index.html"],
+["Rooftop Snipers","Funny sniper battles","Games/rooftopsnipers/index.html"],
+["Getaway Shootout","Race to the finish","Games/getawayshootout/index.html"],
+["Gun Mayhem","Arena battles","Games/gunmayhem/index.html"],
+["Gun Mayhem 2","More chaos","Games/gunmayhem2/index.html"],
+["Fireboy and Watergirl","Co-op puzzle game","Games/fireboywatergirl/index.html"],
+["Vex 3","Platforming challenge","Games/vex3/index.html"],
+["Vex 4","More Vex levels","Games/vex4/index.html"],
+["Vex 5","Advanced Vex","Games/vex5/index.html"],
+["Vex 6","Ultimate Vex","Games/vex6/index.html"],
+["Vex 7","Newest Vex","Games/vex7/index.html"],
+["Paper.io 2","Capture territory","Games/paperio2/index.html"],
+["Shell Shockers","Egg shooter","Games/shellshockers/index.html"],
+["Agar.io","Grow bigger","Games/agario/index.html"],
+["Slither.io","Snake action","Games/slitherio/index.html"],
+["Hole.io","Swallow the city","Games/holeio/index.html"],
+["Minecraft Classic","Classic Minecraft","Games/minecraftclassic/index.html"],
+["Idle Breakout","Idle brick breaker","Games/idlebreakout/index.html"],
+["BitLife","Life simulator","Games/bitlife/index.html"],
+["Bloons TD","Monkey tower defense","Games/bloonstd/index.html"],
+["Bloons TD 2","More monkeys","Games/bloonstd2/index.html"],
+["Chess","Classic chess","Games/chess/index.html"],
+["Checkers","Classic checkers","Games/checkers/index.html"],
+["Pac-Man","Arcade maze","Games/pacman/index.html"],
+["Doodle Jump","Jump endlessly","Games/doodlejump/index.html"],
+["Flappy Bird","Simple but hard","Games/flappybird/index.html"],
+["World's Hardest Game","Very difficult","Games/worldshardestgame/index.html"],
+["Happy Wheels","Obstacle physics","Games/happywheels/index.html"],
+["Super Smash Flash","Platform fighter","Games/supersmashflash/index.html"],
+["Learn to Fly","Launch the penguin","Games/learntofly/index.html"],
+["Bloxorz","Puzzle block game","Games/bloxorz/index.html"],
+["Tank Trouble","Tank battles","Games/tanktrouble/index.html"],
+["HexGL","Futuristic racing","Games/hexgl/index.html"],
+["FNAF","Five Nights at Freddy's","Games/fnaf/index.html"],
+["Bad Ice Cream","Arcade multiplayer","Games/badicecream/index.html"],
+["Bad Ice Cream 2","More levels","Games/badicecream2/index.html"],
+["Bad Ice Cream 3","Ultimate edition","Games/badicecream3/index.html"],
+["Cut the Rope","Feed Om Nom","Games/cuttherope/index.html"],
+["Jetpack Joyride","Endless runner","Games/jetpackjoyride/index.html"],
+["Super Mario 63","Mario fan game","Games/supermario63/index.html"],
+["Among Us","Crewmate adventures","Games/amongus/index.html"],
+["Zombotron","Zombie action","Games/zombotron/index.html"],
+["Earn to Die","Drive through zombies","Games/earntodie/index.html"],
+["Raft Wars","Funny shooter","Games/raftwars/index.html"],
+["Raft Wars 2","More battles","Games/raftwars2/index.html"],
+["Basket Random","Random basketball","Games/basketrandom/index.html"],
+["Soccer Random","Random soccer","Games/soccerrandom/index.html"],
+["Volley Random","Random volleyball","Games/volleyrandom/index.html"],
+["Boxing Random","Random boxing","Games/boxingrandom/index.html"],
+["Basketball Stars","Basketball action","Games/basketballstars/index.html"],
+["Basketball Legends","Legendary players","Games/basketballlegends/index.html"],
+["Football Legends","Football stars","Games/footballlegends/index.html"],
+["Baseball Bros","Baseball action","Games/baseballbros/index.html"],
+["Basketball Bros","Basketball fun","Games/basketballbros/index.html"],
+["Football Bros","Football action","Games/footballbros/index.html"],
+["Soccer Bros","Soccer matches","Games/soccerbros/index.html"],
+["Roblox","The impossible is possible","Games/roblox/index.html"],
+["Snow Rider 3D","Winter sledding","Games/snowrider3d/index.html"],
+["Monkey Mart","Run a store","Games/monkeymart/index.html"],
+["OvO","Precision platformer","Games/ovo/index.html"],
+["OvO Dimensions","More OvO","Games/ovodimensions/index.html"],
+["Time Shooter","Slow-motion FPS","Games/timeshooter/index.html"],
+["Time Shooter 2","More action","Games/timeshooter2/index.html"],
+["Time Shooter 3","Advanced FPS","Games/timeshooter3/index.html"],
+["Madalin Stunt Cars","Open world driving","Games/madalinstuntcars/index.html"],
+["Madalin Stunt Cars 2","More cars","Games/madalinstuntcars2/index.html"],
+["Madalin Stunt Cars 3","Newest version","Games/madalinstuntcars3/index.html"],
+["1v1.LOL","Building battle royale","Games/1v1lol/index.html"],
+["Krunker","Fast FPS","Games/krunker/index.html"],
+["Ragdoll Archers","Funny archery","Games/ragdollarchers/index.html"],
+["Stick Merge","Merge weapons","Games/stickmerge/index.html"],
+["Stick War","Army strategy","Games/stickwar/index.html"],
+["Stick Duel","Stickman battles","Games/stickduel/index.html"],
+["Penalty Kick Online","Soccer penalties","Games/penaltykickonline/index.html"],
+["Smash Karts","Kart battles","Games/smashkarts/index.html"],
+["Surviv.io","Battle royale","Games/survivio/index.html"],
+["Minesweeper","Classic puzzle","Games/minesweeper/index.html"],
+["Solitaire","Classic cards","Games/solitaire/index.html"],
+["2048","Tile merging","Games/2048/index.html"],
+["Tetris","Block puzzle","Games/tetris/index.html"],
+["Snake","Grow longer","Games/snake/index.html"],
+["Helix Jump","Bounce downward","Games/helixjump/index.html"],
+["Paper Minecraft","2D Minecraft","Games/paperminecraft/index.html"],
+["Baldi's Basics","School horror","Games/baldisbasics/index.html"],
+["Five Nights at Freddy's 2","FNAF sequel","Games/fnaf2/index.html"],
+["Five Nights at Freddy's 3","FNAF sequel","Games/fnaf3/index.html"],
+["Five Nights at Freddy's 4","FNAF sequel","Games/fnaf4/index.html"]
 ];
 
 const container = document.getElementById("games-container");
 
-games.forEach(game => {
-  container.innerHTML += `
-    <div class="game-card">
-      <h3>${game[0]}</h3>
-      <p>${game[1]}</p>
-      <a class="play-btn" href="${game[2]}">Play</a>
-    </div>
-  `;
-});
+function renderGames(list){
+    container.innerHTML = "";
 
-function searchGames() {
-    let input = document.getElementById("search").value.toLowerCase();
-    let cards = document.querySelectorAll(".game-card");
+    list.forEach(game => {
+        const card = document.createElement("div");
+        card.className = "game-card";
 
-    cards.forEach(card => {
-        let text = card.innerText.toLowerCase();
+        card.innerHTML = `
+            <h3>${game[0]}</h3>
+            <p>${game[1]}</p>
+            <a class="play-btn" href="${game[2]}">Play</a>
+        `;
 
-        if(text.includes(input)){
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
+        container.appendChild(card);
     });
 }
+
+function searchGames(){
+    const search = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const filtered = games.filter(game =>
+        game[0].toLowerCase().includes(search) ||
+        game[1].toLowerCase().includes(search)
+    );
+
+    renderGames(filtered);
+}
+
+renderGames(games);
 </script>
 
 </body>
 </html>
+
