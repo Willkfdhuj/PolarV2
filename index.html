@@ -99,6 +99,40 @@ footer{
     background:rgba(255,255,255,0.1);
     z-index:2;
 }
+ #clock{
+    position:fixed;
+    top:14px;
+    right:18px;
+
+    padding:10px 16px;
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.10);
+    backdrop-filter:blur(14px);
+
+    color:#e9fbff;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:0.5px;
+
+    border:1px solid rgba(125,223,255,0.25);
+
+    box-shadow:
+        0 0 10px rgba(125,223,255,0.25),
+        inset 0 0 10px rgba(255,255,255,0.05);
+
+    z-index:999;
+
+    transition:all 0.25s ease;
+}
+
+/* subtle hover polish */
+#clock:hover{
+    transform:scale(1.05);
+    box-shadow:
+        0 0 18px rgba(125,223,255,0.45),
+        inset 0 0 10px rgba(255,255,255,0.08);
+}
 </style>
 </head>
 
@@ -114,6 +148,7 @@ footer{
         <a href="apps.html">🌐 Apps</a>
         <a href="settings.html">⚙️ Settings</a>
     </nav>
+      <div id="clock"></div>
 </header>
 
 <section class="hero">
@@ -208,6 +243,17 @@ function createSnowflake() {
 }
 
 setInterval(createSnowflake, 200);
+</script>
+  
+  <script>
+function updateTime(){
+    const now = new Date();
+    document.getElementById("clock").textContent =
+        now.toLocaleTimeString();
+}
+
+updateTime();
+setInterval(updateTime, 1000);
 </script>
 
 </body>
