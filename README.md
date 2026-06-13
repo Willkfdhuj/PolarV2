@@ -6,6 +6,8 @@
 
 <ul>
   <li>A clean fast <strong>Proxy</strong></li>
-  <li>Hundreds of cool <strong>Games</strong>to offer</li>
+  <li>Hundreds of cool <strong>Games</strong> to offer</li>
   <li>A settings page with a <strong>Cloak</strong> and <strong>Site name changer</strong> feature</li>
 </ul>
+
+Join the discord at <strong><em>https://discord.gg/Ra2AksCVDW</em></strong>
