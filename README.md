@@ -1,2 +1,3 @@
-# PolarV2
-Let Polar V2 Freeze your boredom
+# Polar V2
+
+<strong>Help us make Polar V2 one of the biggest links!</strong
