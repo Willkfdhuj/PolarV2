@@ -11,3 +11,5 @@
 </ul>
 
 Join the discord at <strong><em>https://discord.gg/Ra2AksCVDW</em></strong>
+
+<h2>Stay frosty :D</h2>
