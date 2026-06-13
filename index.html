@@ -143,6 +143,38 @@ footer{
     backdrop-filter:blur(8px);
     z-index:999;
 }
+  .whats-new {
+    position: absolute;
+    left: 40px;
+    top: 220px;
+
+    width: 280px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+
+    padding: 20px;
+    text-align: left;
+
+    box-shadow: 0 0 15px rgba(125,223,255,0.15);
+}
+
+.whats-new h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.whats-new ul {
+    list-style: none;
+}
+
+.whats-new li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
 </style>
 </head>
 
@@ -160,7 +192,16 @@ footer{
     </nav>
       <div id="clock"></div>
 </header>
+<div class="whats-new">
+  <h3><strong>📢 Updates</strong></h3>
 
+    <ul id="updatesList">
+        <li>Added new games</li>
+        <li>Improved UI</li>
+        <li>Updated Discord link</li>
+      <li>New Features</li>
+    </ul>
+</div>
 <section class="hero">
 <h2><strong>Welcome to Polar V2</strong></h2>
   <h3><strong>Let Polar V2 freeze up your boredom</strong></h3>
@@ -239,13 +280,10 @@ document.getElementById("searchForm").addEventListener("submit", function(e) {
        <h4 style="margin-top:30px;">
     <strong>Quote: "Just because something is hard and you face obstacles doesn't mean you give up, that's called life." — Wyllyia</strong>
 </h4>
-       
-         <h5 style="margin-top:30px;">
-     <em>Founded by Will<em>
-       </h5>
+
 
 <footer>
-    © 2026 Polar V2
+    © 2026 Polar V2 • Created by Will
 </footer>
 
 <script>
