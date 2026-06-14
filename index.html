@@ -143,37 +143,46 @@ footer{
     backdrop-filter:blur(8px);
     z-index:999;
 }
-  .whats-new {
-    position: absolute;
-    left: 40px;
-    top: 220px;
+.side-panel{
+    position:absolute;
+    top:220px;
 
-    width: 280px;
+    width:260px;
+    min-height:300px;
 
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
 
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 18px;
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:16px;
 
-    padding: 20px;
-    text-align: left;
+    padding:15px;
+    text-align:left;
 
-    box-shadow: 0 0 15px rgba(125,223,255,0.15);
+    box-shadow:0 0 15px rgba(125,223,255,0.15);
 }
 
-.whats-new h3 {
-    margin-bottom: 15px;
-    text-align: center;
+.side-panel h3{
+    text-align:center;
+    margin-bottom:10px;
 }
 
-.whats-new ul {
-    list-style: none;
+.side-panel ul{
+    list-style:none;
+    padding:0;
 }
 
-.whats-new li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+.side-panel li{
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.left{
+    left:40px;
+}
+
+.right{
+    right:40px;
 }
 </style>
 </head>
@@ -192,14 +201,24 @@ footer{
     </nav>
       <div id="clock"></div>
 </header>
-<div class="whats-new">
-  <h3><strong>📢 Updates</strong></h3>
+<div class="side-panel left">
+    <h3>📢 What's New</h3>
+    <ul>
+        <li>New games added</li>
+        <li>UI improvements</li>
+      <li>Discord updated</li>
+      <li>New features</li>
+    </ul>
+</div>
 
-    <ul id="updatesList">
-        <li>Added new games</li>
-        <li>Improved UI</li>
-        <li>Updated Discord link</li>
-      <li>New Features</li>
+<div class="side-panel right">
+    <h3>📅 Upcoming Events</h3>
+    <ul>
+        <li>Polar V2 release July 23rd</li>
+        <li>New apps coming soon</li>
+        <li>100+ Games</li>
+      <li>My <strong>BIRTHDAY!</strong> September 13</li>
+    
     </ul>
 </div>
 <section class="hero">
