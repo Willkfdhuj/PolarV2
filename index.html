@@ -184,6 +184,44 @@ footer{
 .right{
     right:40px;
 }
+.search-panel{
+    margin: 80px auto;
+
+    width: 420px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    background: rgba(255,255,255,0.08); /* SAME as side panels */
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.15); /* SAME border */
+
+    border-radius: 16px;
+
+    box-shadow: 0 0 15px rgba(125,223,255,0.15); /* SAME glow */
+
+    transition: 0.3s ease;
+}
+
+.search-panel input{
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+    font-size: 16px;
+}
+
+.search-panel input::placeholder{
+    color: rgba(255,255,255,0.6);
+
 </style>
 </head>
 
@@ -225,20 +263,18 @@ footer{
 <h2><strong>Welcome to Polar V2</strong></h2>
   <h3><strong>Let Polar V2 freeze up your boredom</strong></h3>
 
-<form id="searchForm" style="margin-top:20px;">
+<div class="search-panel">
+<br>
+  <br>
+<form id="searchForm">
     <input
         id="searchInput"
         type="text"
-        placeholder="Enter a website (example.com)"
-        style="padding:12px;width:300px;border:none;border-radius:10px;"
+        placeholder="Enter a website Url"
+        style="padding:12px;width:100%;border:none;border-radius:10px;background:transparent;color:white;outline:none;"
     >
-    <button
-        type="submit"
-        style="padding:12px 20px;border:none;border-radius:10px;background:#00bfff;color:white;font-weight:bold;cursor:pointer;"
-    >
-        Open
-    </button>
 </form>
+</div>
 
 <div id="frameContainer" style="margin-top:20px; display:none;">
     <iframe
@@ -338,4 +374,4 @@ setInterval(updateTime, 1000);
 </script>
 
 </body>
-</html>
+  </html>
