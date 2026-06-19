@@ -1,15 +1,21 @@
-# Polar V2
+### ❄️ WELCOME TO POLAR V2❄️
 
-<strong>Help us make Polar V2 one of the biggest links!</strong>
+Why polar v2? Polar V2 is a game website with a fast proxy, hundreds of games, a cloak and apps page. Polar v2 has a beautiful look to it too. JOIN TODAY!!!
 
-<h2>What does Polar have to offer?</h2>
+🎮COOL GAMES
 
-<ul>
-  <li>A clean fast <strong>Proxy</strong></li>
-  <li>Hundreds of cool <strong>Games</strong> to offer</li>
-  <li>A settings page with a <strong>Cloak</strong> and <strong>Site name changer</strong> feature</li>
-</ul>
+100+ unblocked-style games (no downloads, no wait)
+Smooth, fast loading (no laggy junk pages)
 
-Join the discord at <strong><em>https://discord.gg/Ra2AksCVDW</em></strong>
+🧊 CLEAN ICE UI
 
-<h2>Stay frosty :D</h2>
+Cool Icy vibe
+Super easy navigation (no confusion, just games)
+
+💬 DISCORD COMMUNITY
+
+Game drops + updates first
+Events, polls, and upcoming features sneak peeks
+
+
+👉 JOIN POLAR V2!!!  - Will https://discord.gg/wccU7DYHX
