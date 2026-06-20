@@ -163,6 +163,15 @@ footer{
         transform:translateY(110vh);
     }
 }
+
+.game-card img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
 </style>
 </head>
 
@@ -312,6 +321,7 @@ function renderGames(list){
         card.className = "game-card";
 
         card.innerHTML = `
+            <img src="png/${game[2].split('/')[1].toLowerCase()}.png" alt="${game[0]}">
             <h3>${game[0]}</h3>
             <p>${game[1]}</p>
             <a class="play-btn" href="${game[2]}">Play</a>
